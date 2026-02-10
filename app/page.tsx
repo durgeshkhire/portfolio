@@ -12,16 +12,10 @@ import { GraduationCap, Award, Briefcase, Trophy, ChevronRight, Code } from "luc
 
 const education = [
   {
-    school: "University of Technology",
-    degree: "B.S. in Computer Science",
-    year: "2020 - 2024",
-    description: "Specialized in Artificial Intelligence and Web Technologies."
-  },
-  {
-    school: "High School Academy",
-    degree: "Pre-Engineering",
-    year: "2018 - 2020",
-    description: "Focused on Mathematics and Physics."
+    school: "MES Institute of Management & Career Courses (IMCC), Pune",
+    degree: "Masters of Computer Application - MCA",
+    year: "2023 - 2025",
+    description: "Advanced studies in Software Engineering, Java Backend Development, and Cloud Computing."
   }
 ];
 
