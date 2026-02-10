@@ -99,7 +99,7 @@ export default function Home() {
             transition={{ delay: 1.5 }}
             style={{ fontSize: 'clamp(2rem, 6vw, 4rem)', opacity: 0.8, marginBottom: '2rem' }}
           >
-            I am a <TechText text="Full Stack Developer" />
+            I am a <TechText text="Java Backend Developer" />
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -107,9 +107,9 @@ export default function Home() {
             transition={{ delay: 0.4 }}
             style={{ maxWidth: '600px', fontSize: '1.1rem', lineHeight: 1.6, opacity: 0.8 }}
           >
-            I'm a full-stack developer passionate about creating stunning,
-            high-performance web applications with a focus on user experience
-            and modern design.
+            I'm a Java developer passionate about building high-performance
+            backend systems, scalable APIs, and robust architectures with a focus on
+            clean code and modern technologies.
           </motion.p>
 
           <SocialIcons />
@@ -125,14 +125,11 @@ export default function Home() {
             </h2>
             <div className="glass-card" style={{ padding: '2rem' }}>
               <p style={{ lineHeight: 1.8, opacity: 0.9 }}>
-                With over 4 years of experience in the tech industry, I specialize in
-                bridging the gap between design and code. I love exploring new
-                technologies and pushing the boundaries of what's possible on the web.
-              </p>
-              <br />
-              <p style={{ lineHeight: 1.8, opacity: 0.9 }}>
-                When I'm not coding, you can find me hiking, playing chess, or
-                contributing to open-source projects.
+                I am an MCA Graduate (2025) and a passionate Java Developer with hands-on experience
+                in building backend applications using Spring, Spring Boot, Hibernate, PostgreSQL,
+                and RESTful APIs. I focus on writing clean, scalable, and maintainable code while
+                continuously learning new technologies. Currently seeking opportunities as a Java
+                Backend Developer.
               </p>
             </div>
           </div>
