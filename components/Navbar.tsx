@@ -14,14 +14,24 @@ const navItems = [
 
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        handleResize();
+
         const handleScroll = () => {
-            // Threshold for scroll animation
             setIsScrolled(window.scrollY > 100);
         };
+
+        window.addEventListener("resize", handleResize);
         window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+            window.removeEventListener("scroll", handleScroll);
+        };
     }, []);
 
     return (
@@ -29,15 +39,18 @@ export default function Navbar() {
             initial={{ y: -100, opacity: 0 }}
             animate={{
                 opacity: 1,
-                // Using vh for more reliable viewport centering
-                top: isScrolled ? "50vh" : "1.5rem",
-                left: isScrolled ? "calc(100% - 2rem)" : "50%",
-                x: isScrolled ? "-100%" : "-50%",
-                y: isScrolled ? "-50%" : "0%",
-                flexDirection: isScrolled ? "column" : "row",
-                borderRadius: isScrolled ? "30px" : "100px",
-                padding: isScrolled ? "1.5rem 0.8rem" : "0.75rem 2rem",
-                gap: isScrolled ? "1.5rem" : "2rem",
+                top: isMobile ? "auto" : (isScrolled ? "50vh" : "1.5rem"),
+                bottom: isMobile ? "1.5rem" : "auto",
+                left: isMobile ? "50%" : (isScrolled ? "auto" : "50%"),
+                right: !isMobile && isScrolled ? "2rem" : "auto",
+                x: "-50%",
+                y: !isMobile && isScrolled ? "-50%" : "0%",
+                flexDirection: !isMobile && isScrolled ? "column" : "row",
+                borderRadius: !isMobile && isScrolled ? "30px" : "100px",
+                padding: !isMobile && isScrolled ? "1.2rem 0.8rem" : "0.7rem 1.2rem",
+                gap: !isMobile && isScrolled ? "1.2rem" : (isMobile ? "1.2rem" : "2rem"),
+                maxWidth: isMobile ? "95vw" : "none",
+                width: isMobile ? "max-content" : "auto",
             }}
             transition={{
                 type: "spring",
@@ -68,23 +81,22 @@ export default function Navbar() {
                     className="nav-link"
                 >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        {/* Always render both but animate their visibility to ensure smooth layout */}
-                        {isScrolled ? (
+                        {isScrolled || isMobile ? (
                             <motion.div
-                                initial={{ scale: 0, rotate: -45 }}
-                                animate={{ scale: 1, rotate: 0 }}
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
                                 whileHover={{ scale: 1.2 }}
                                 title={item.name}
                                 style={{ color: 'var(--accent)' }}
                             >
-                                <item.icon size={22} />
+                                <item.icon size={20} />
                             </motion.div>
                         ) : (
                             <motion.span
-                                initial={{ opacity: 0, x: 10 }}
-                                animate={{ opacity: 1, x: 0 }}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
                                 style={{
-                                    fontSize: '0.85rem',
+                                    fontSize: '0.8rem',
                                     fontWeight: 600,
                                     letterSpacing: '0.05em',
                                     whiteSpace: 'nowrap'

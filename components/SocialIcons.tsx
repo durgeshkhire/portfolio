@@ -26,7 +26,7 @@ export default function SocialIcons() {
                     transition={{ delay: index * 0.1 + 0.5 }}
                     style={{ color: 'inherit' }}
                 >
-                    <link.icon className="interactive" size={28} />
+                    <link.icon className="interactive" size={typeof window !== "undefined" && window.innerWidth < 768 ? 24 : 28} />
                 </motion.a>
             ))}
         </div>

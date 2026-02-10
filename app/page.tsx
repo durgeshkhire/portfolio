@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import Section from "@/components/Section";
 import SocialIcons from "@/components/SocialIcons";
 import ProjectCard from "@/components/ProjectCard";
@@ -61,6 +62,15 @@ const awards = [
 ];
 
 export default function Home() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div style={{ paddingBottom: '100px' }}>
       {/* Hero Section */}
@@ -226,9 +236,16 @@ export default function Home() {
       </Section>
 
       {/* Floating Spotify Badge */}
-      <div style={{ position: 'fixed', bottom: '2rem', right: '2rem', zIndex: 100 }}>
-        <SpotifyStatus />
-      </div>
+      {!isMobile && (
+        <div style={{
+          position: 'fixed',
+          bottom: '2rem',
+          right: '2rem',
+          zIndex: 100,
+        }}>
+          <SpotifyStatus />
+        </div>
+      )}
     </div>
   );
 }
