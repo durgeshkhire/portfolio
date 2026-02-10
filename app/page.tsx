@@ -16,6 +16,12 @@ const education = [
     degree: "Masters of Computer Application - MCA",
     year: "2023 - 2025",
     description: "Advanced studies in Software Engineering, Java Backend Development, and Cloud Computing."
+  },
+  {
+    school: "MES's Senior College, Pune",
+    degree: "BBA- CA",
+    year: "2020 - 2023",
+    description: "Foundational studies in Computer Applications, Database Management, and Programming."
   }
 ];
 
